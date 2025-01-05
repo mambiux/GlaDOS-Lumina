@@ -143,27 +143,6 @@ This will be based on servo- and stepper-motors. 3D printable STL will be provid
 
 ## Installation Instruction
 
-
-### *New Simplified  Windows Installation Process*
-Don't want to compile anything?  Try this simplified process, but be aware it's still in the experimental stage!
-
-
-1. Open the Microsoft Store, search for `python` and install Python 3.12.
-   a. To use Python 3.10, install `typing_extensions` and replace `import typing` in `glados/llama.py` with `import typing_extensions`.
-2. Download and unzip this repository somewhere in your home folder.
-3. Run the `install_windows.bat`. During the process, you will be prompted to install eSpeak-ng, which is necessary for GLaDOS's speech capabilities. This step also downloads the Whisper voice recognition model and the Llama-3 8B model.
-4. Once this is all done, you can initiate  GLaDOS with the `start_windows.bat` script.
-
-### *Even newer Simplified macOS Installation Process*
-This is still experimental. Any issues can be addressed in the Discord server. If you create an issue related to this, you will be referred to the Discord server.
-
-
-1. Install Python 3.12 from pythons website (https://www.python.org/downloads/release/python-3124/)
-2. (Optional) Install Homebrew before running the `install_mac.sh`. If you don't do this, it will install it for you (Not tested).
-3. `git clone` this repository using `git clone github.com/dnhkng/glados.git`
-4. Run the `install_mac.sh`. If you do not have Python installed, then you will run into an error.
-5. Once this finishes run the `start_mac.sh` to start GLaDOS
-
 ## Regular installation
 
 If you want to install the TTS Engine on your machine, please follow the steps
