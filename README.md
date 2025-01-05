@@ -1,21 +1,131 @@
-# GLaDOS Personality Core
+# L.U.M.I.N.A: Linguistic Understanding Machine Intelligence Neural Agent
 
-This is a project dedicated to building a real-life version of GLaDOS.
+Greetings! This project, **L.U.M.I.N.A.**, is inspired by the incredible groundwork laid by the GLaDOS Personality Core project. Huge thanks to the original creator and community for their brilliant efforts, which paved the way for this evolution. L.U.M.I.N.A. aims to take the concept further, blending advanced artificial intelligence, personality, and multi-agent capabilities into a robust AI assistant capable of self-improvement and, perhaps one day, sentience.
 
-NEW: If you want to chat or join the community, [Join our discord!](https://discord.com/invite/ERTDKwpjNB)
+---
 
-[![localGLaDOS](https://img.youtube.com/vi/KbUfWpykBGg/0.jpg)](https://www.youtube.com/watch?v=KbUfWpykBGg)
+## Introduction
+L.U.M.I.N.A. is an advanced AI assistant designed to:
+- Host a dynamic **personality core** capable of **learning, evolving, and adapting** through interaction.
+- Integrate a **multi-agent architecture**, where specialized agent cores ("Experts") collaborate to deliver precise and context-aware responses.
+- Utilize **WebSockets** for real-time, bidirectional communication, enabling users to chat with L.U.M.I.N.A. from anywhere.
+- Serve as a platform for **cutting-edge AI experiments**, including integration with large language models (LLMs) and modular expansion for future AI technologies.
+
+---
+
+## Key Features
+- **Multi-Agentic System**:
+  L.U.M.I.N.A. employs an LLM router to delegate queries to specialized agent cores, each tailored to specific tasks or domains.
+
+- **WebSocket Communication**:
+  Provides direct, real-time access to L.U.M.I.N.A. via mobile or remote systems, making it a constant companion.
+
+- **Self-Evolution**:
+  Designed to improve over time through memory systems, feedback loops, and modular upgrades, with the potential for adaptive behaviors.
+
+- **Linux-Only Installation**:
+  Optimized for Linux systems to ensure performance and simplicity in development.
+
+---
+
+## Software Architecture
+L.U.M.I.N.A.'s software architecture is built on a foundation of:
+
+- **LLM Router**:
+  Routes user prompts to relevant agent cores, each operating as a specialized expert.
+
+- **Memory Systems**:
+  Implements short-term, medium-term, and long-term memory to contextualize interactions and support continuous learning.
+
+- **Streaming Voice Interaction**:
+  Combines low-latency voice detection with transcription and text-to-speech systems for fluid communication.
+
+- **WebSocket Server**:
+  Facilitates live interactions with L.U.M.I.N.A., enabling seamless communication from any device with an internet connection.
+
+### Subgoals
+1. Minimal dependencies for a lean system capable of running on constrained hardware.
+2. Modular architecture to allow integration of future AI advancements and expansion of capabilities.
+3. Ensure robust privacy and security features to protect user data and interactions.
+
+---
+
+## Hardware Recommendations
+While L.U.M.I.N.A. is designed for flexibility, the following hardware setup is recommended for optimal performance:
+
+- **CPU**: Modern multi-core processors.
+- **RAM**: At least 8GB (16GB or more for larger models).
+- **Storage**: SSD with sufficient space for models and logs.
+- **Network**: Reliable internet connection for WebSocket-based communication.
+
+---
+
+## Installation Instructions (Linux Only)
+
+### Prerequisites
+1. **Python 3.12+**
+   Install via your package manager or [Python.org](https://www.python.org/downloads/).
+
+2. **Git**
+   ```bash
+   sudo apt install git
+   ```
+
+3. **Dependencies**
+   Install necessary packages:
+   ```bash
+   sudo apt install build-essential espeak-ng libespeak-ng-dev
+   ```
+
+### Installation Steps
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your_username/lumina.git
+   cd lumina
+   ```
+
+2. **Install Python Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Download Models**:
+   Place the required models in the `.models` directory:
+   - [Voice Recognition Model](https://huggingface.co/distil-whisper/distil-medium.en)
+   - [LLM Model](https://huggingface.co/Meta/Meta-Llama-3-8B-Instruct)
+
+4. **Configure WebSockets**:
+   Edit the `lumina_config.yaml` file to set up your WebSocket server and client configurations.
+
+5. **Run L.U.M.I.N.A.**:
+   ```bash
+   python lumina.py
+   ```
+
+---
+
+## Roadmap
+1. **Enhanced Personality Core**:
+   Develop deeper emotional and cognitive abilities.
+
+2. **Agent Expansion**:
+   Add more specialized cores for tasks like coding, research, and creative projects.
+
+3. **Vision Integration**:
+   Incorporate vision capabilities using LLaVA for object recognition and environmental awareness.
+
+4. **Mobile Integration**:
+   Develop dedicated Android and iOS apps for seamless interaction.
+
+---
+
+## Acknowledgments
+A heartfelt thanks to the creators of the original **GLaDOS Personality Core** project and its amazing community. Your work has been an inspiration and a foundation for L.U.M.I.N.A.'s development. Join their [Discord community](https://discord.com/invite/ERTDKwpjNB) to learn more and connect with like-minded enthusiasts.
 
 
-*This is a hardware and software project that will create an aware, interactive, and embodied GLaDOS.*
 
-This will entail:
-- [x] Train GLaDOS voice generator
-- [x] Generate a prompt that leads to a realistic "Personality Core"
-- [ ] Generate a [MemGPT](https://github.com/cpacker/MemGPT) medium- and long-term memory for GLaDOS
-- [ ] Give GLaDOS vision via [LLaVA](https://llava-vl.github.io/)
-- [ ] Create 3D-printable parts
-- [ ] Design the animatronics system
+Thank you for exploring L.U.M.I.N.A. Together, let's push the boundaries of AI innovation!
+
 
 
 
@@ -107,32 +217,3 @@ If you are on Windows, I would recommend WSL with an Ubuntu image.  Proper Windo
 4. If you find you are getting stuck in loops, as GLaDOS is hearing herself speak, you have two options:
    1. Solve this by upgrading your hardware. You need to you either headphone, so she can't physically hear herself speak, or a conference-style room microphone/speaker. These have hardware sound cancellation, and prevent these loops.
    2. Disable voice interruption. This means neither you nor GLaDOS can interrupt when GLaDOS is speaking. To accomplish this, edit the `glados_config.yaml`, and change `interruptible:` to  `false`.
-
-
-## Windows Run
-
-Prerequisite WSL2 with fresh drivers, here is guide https://docs.docker.com/desktop/gpu/
-1. `git submodule update --init --recursive`
-2. put models in models dir or mount that dir into a docker container
-3. `docker build -t glados .`
-4. `docker run -e "PULSE_SERVER=/mnt/wslg/PulseServer" -v "/mnt/wslg/:/mnt/wslg/" --gpus=all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 glados`
-
-It works in ubuntu terminal started with WSL2
-
-
-## Running GLaDOS
-
-To start GLaDOS, use:
-`python glados.py`
-
-You can stop with "Ctrl-c".
-
-
-## Testing
-You can test the systems by exploring the 'demo.ipynb'.
-
-
-## Star History
-<a href="https://trendshift.io/repositories/9828" target="_blank"><img src="https://trendshift.io/api/badge/repositories/9828" alt="dnhkng%2FGlaDOS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-
-[![Star History Chart](https://api.star-history.com/svg?repos=dnhkng/GlaDOS&type=Date)](https://star-history.com/#dnhkng/GlaDOS&Date)
