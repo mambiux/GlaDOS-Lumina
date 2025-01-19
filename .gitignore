@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#submodules directory whisper.cpp and llama.cpp
+submodules/
+
 # Distribution / packaging
 .Python
 build/
@@ -162,3 +165,4 @@ cython_debug/
 # The large model files
 *.bin
 *.gguf
+submodules/whisper.cpp/
